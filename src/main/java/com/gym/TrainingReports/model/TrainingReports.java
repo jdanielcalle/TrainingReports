@@ -18,4 +18,16 @@ public class TrainingReports {
     private LocalDate trainingDate;
     private String trainingType;
     private String trainingDuration;
+
+    public boolean isValidTrainingDate() {
+        return trainingDate != null && trainingDate.isBefore(LocalDate.now());
+    }
+
+    public boolean isValidTrainingDuration() {
+        return trainingDuration != null && !trainingDuration.isEmpty();
+    }
+
+    public boolean isValid() {
+        return isValidTrainingDate() && isValidTrainingDuration();
+    }
 }
