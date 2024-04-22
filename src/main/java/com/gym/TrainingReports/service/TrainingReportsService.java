@@ -1,5 +1,6 @@
 package com.gym.TrainingReports.service;
 
+import com.gym.TrainingReports.exception.TrainingReportNotFoundException;
 import com.gym.TrainingReports.model.TrainingReports;
 import com.gym.TrainingReports.repository.TrainingReportsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class TrainingReportsService {
         LocalDate startDate = LocalDate.of(year, month, 1);
         LocalDate endDate = startDate.plusMonths(1).minusDays(1);
 
-        return trainingReportsRepository.findReportsByLearnerAndDate(idLearner, startDate, endDate);
+        List<TrainingReports> reports = trainingReportsRepository.findReportsByLearnerAndDate(idLearner, startDate, endDate);
+        if (reports.isEmpty()) {
+            throw new TrainingReportNotFoundException("No se encontraron informes de entrenamiento para el aprendiz en el mes y año especificados.");
+        }
+        return reports;
     }
 }
