@@ -52,7 +52,6 @@ public class TrainingReportsController {
     public String handleTrainingReportNotFoundException(TrainingReportNotFoundException ex) {
         return ex.getMessage();
     }
-
     @ExceptionHandler(InvalidTrainingReportException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleInvalidTrainingReportException(InvalidTrainingReportException ex) {
