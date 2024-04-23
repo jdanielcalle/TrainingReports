@@ -13,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import com.gym.TrainingReports.exception.TrainingReportNotFoundException;
 import com.gym.TrainingReports.exception.InvalidTrainingReportException;
 
-import java.util.List;
-
 
 @RestController
 @RequestMapping("/api/training-reports")
@@ -38,9 +36,9 @@ public class TrainingReportsController {
     }
 
     @GetMapping("/monthly-reports/{idLearner}/{month}/{year}")
-    public ResponseEntity<List<TrainingReports>> getMonthlyReports(@PathVariable int idLearner, @PathVariable int month, @PathVariable int year) {
+    public ResponseEntity<String> getMonthlyReports(@PathVariable int idLearner, @PathVariable int month, @PathVariable int year) {
         try {
-            List<TrainingReports> reports = trainingReportsService.getMonthlyReports(idLearner, month, year);
+            String reports = trainingReportsService.getMonthlyReports(idLearner, month, year);
             return ResponseEntity.ok(reports);
         } catch (TrainingReportNotFoundException e) {
             return ResponseEntity.notFound().build();

@@ -10,9 +10,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TrainingReportsDTO {
-    private int idTrainee;
+    private Integer idTrainee;
     private String nameTrainee;
-    private int idTrainer;
+    private Integer idTrainer;
     private String nameTrainer;
     private LocalDate trainingDate;
     private String trainingType;
